@@ -1,1 +1,2 @@
 grabbing html gerek var mı?
+db bağlanmıyor
