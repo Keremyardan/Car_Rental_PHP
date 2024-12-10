@@ -120,7 +120,6 @@ error_reporting(0);
                                     </div>
                                 </div>
                             <?php }
-
                         } ?>
 
                     </div>
@@ -205,8 +204,26 @@ error_reporting(0);
                 </div>
             </div>
         </div>
-                    <div class="dark-overlay"></div>
+        <div class="dark-overlay"></div>
     </section>
+
+    <?php include('includes/footer.php'); ?>
+
+    <div id="back-top" class="back-top" ><a href="#top"><i class="fa fa-angle-up" aria-hidden="true"></i></a></div>
+
+    <?php include('includes/login.php'); ?>
+
+    <?php include('includes/registration.php') ?>
+
+    <?php include('includes/forgotpassword.php') ?>
+    
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/interface.js"></script>
+    <script src="assets/switcher/js/switcher.js"></script>
+    <script src="assets/js/bootstrap-slider.min.js"></script>
+    <script src="assets/js/slick.min.js"></script>
+    <script src="assets/js/owl.carousel.min.js"></script>
 </body>
 
 </html>
