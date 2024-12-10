@@ -1,2 +1,11 @@
 grabbing html gerek var mı?
-index.php render sorunu
+index.php render sorunu?
+
+colorswitcher.php
+header.php
+footer.php
+login.php
+registration.php
+forgotpassword.php
+
+
