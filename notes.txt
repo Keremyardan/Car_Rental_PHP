@@ -2,7 +2,6 @@ grabbing html gerek var mı?
 index.php render sorunu?
 
 
-footer.php
 login.php
 registration.php
 forgotpassword.php
