@@ -8,7 +8,7 @@
                 <div class="col-sm-9 col-md-10">
                     <div class="header-info">
                         <?php
-                        $sql = "SELECT EmailId, ContactNo, from tblcontactusinfo";
+                        $sql = "SELECT EmailId, ContactNo from tblcontactusinfo";
 
                         $query = $dbh->prepare($sql);
                         $query->execute();
