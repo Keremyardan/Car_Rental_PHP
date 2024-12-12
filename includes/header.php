@@ -1,3 +1,10 @@
+<?php
+// Oturum kontrolü ve başlatma
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+?>
+
 <header>
     <div class="default-header">
         <div class="container">
@@ -33,7 +40,7 @@
                         <div class="social-follow"></div>
 
                     </div>
-                    <?php if (strlen($_SESSION['login']) == 0) {
+                    <?php if (!isset($_SESSION['login']) || strlen($_SESSION['login']) == 0) {
                         ?>
                         <div class="login-btn"><a href="#loginform" class="btn btn-xs uppercase" data-toggle="modal"
                                 data-dismiss="modal">Login / Register</a>
@@ -68,7 +75,7 @@
                                 <i class="fa fa-user-circle" aria-hidden="true"></i>
 
                                 <?php
-
+                                if (isset($_SESSION['login']) && strlen($_SESSION['login']) > 0) {
                                 $email = $_SESSION['login'];
                                 $sql = "SELECT Fullname FROM tblusers WHERE EmailId=:email";
                                 $query = $dbh->prepare($sql);
@@ -81,6 +88,7 @@
                                         echo htmlentities($result->Fullname);
                                     }
                                 }
+                            }
                                 ?>
                                 <i class="fa fa-angle-down" aria-hidden="true"></i></a>
                             <ul class="droprown-menu">
