@@ -1,7 +1,7 @@
 grabbing html gerek var mı?
 index.php render sorunu?
 
-registration.php
+
 forgotpassword.php
 
 
