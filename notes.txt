@@ -1,7 +1,7 @@
 grabbing html gerek var mı?
-index.php render sorunu?
+index.php render sorunu? // birsuru hata var kısmen giderildi
 
 
-forgotpassword.php
+vehicle details tamamla
 
 

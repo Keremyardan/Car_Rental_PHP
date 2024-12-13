@@ -321,7 +321,16 @@ if (isset($_POST['submit'])) {
                         <?php }
     } ?>
                 </div>
-                
+                <aside class="col-md-3">
+                    <div class="share_vehicle">
+                        <p>Share: <a href="#"><i class="fa fa-facebook-square" aria-hidden="true"></i></a>
+                        <a href="#"><i class ="fa fa-twitter-square" aria-hidden="true"></i></a>
+                        <a href="#"><i class ="fa fa-linkedin-square" aria-hidden="true"></i></a>
+                        <a href="#"><i class ="fa fa-google-plus-square" aria-hidden="true"></i></a>
+                    </p>
+                    </div>
+                    
+                </aside>
             </div>
         </div>
     </section>
