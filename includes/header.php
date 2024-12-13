@@ -94,7 +94,7 @@ if (session_status() === PHP_SESSION_NONE) {
                             <ul class="droprown-menu">
                                 <?php
 
-                                if ($_SESSION["login"]) {
+                                if (isset($_SESSION["login"]) && !empty($_SESSION['login'])) {
                                     ?>
 
                                     <li><a href="profile.php">Profile Settings</a></li>

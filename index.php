@@ -93,7 +93,7 @@ include('includes/config.php');
                                 <div class="col-list-3">
                                     <div class="recent-car-list">
                                         <div class="car-info-box">
-                                            <a href="vehical-details.php?vhid=<?php echo htmlentities($result->id); ?>"><img
+                                            <a href="vehicle-details.php?vhid=<?php echo htmlentities($result->id); ?>"><img
                                                     src="admin/img/vehicleimages/<?php echo htmlentities($result->Vimage1); ?>"
                                                     class="img-responsive" alt="image"></a>
                                             <ul>
