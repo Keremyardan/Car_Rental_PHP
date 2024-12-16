@@ -337,55 +337,111 @@ if (isset($_POST['submit'])) {
                         <form method="post">
                             <div class="form-group">
                                 <label>From Date:</label>
-                                <input type="date" class="form_control" name="fromdate" placeholder="From Date" required>
+                                <input type="date" class="form_control" name="fromdate" placeholder="From Date"
+                                    required>
                             </div>
                             <div class="form-group">
                                 <label>To Date:</label>
                                 <input type="date" class="form_control" name="todate" placeholder="To Date" required>
                             </div>
                             <div class="form-group">
-                              <textarea rows="4" class="form-control" name="message" placeholder="Message"required></textarea>
+                                <textarea rows="4" class="form-control" name="message" placeholder="Message"
+                                    required></textarea>
                             </div>
                             <?php if ($_SESSION['login']) { ?>
-                                    <div class="form-group" >
-                                        <input type="submit" class="btn" name="submit" value="Book Now">
-                                    </div>
-                                    <?php 
+                                <div class="form-group">
+                                    <input type="submit" class="btn" name="submit" value="Book Now">
+                                </div>
+                                <?php
 
                             } else { ?>
-                                <a href="#loginform" class="btn btn-xs uppercase" data-toggle="modal" data-dismiss="modal">Login for a Booking!</a>
+                                <a href="#loginform" class="btn btn-xs uppercase" data-toggle="modal"
+                                    data-dismiss="modal">Login for a Booking!</a>
                             <?php } ?>
-                            
+
                         </form>
                     </div>
                 </aside>
             </div>
 
             <div class="space-20"></div>
-            <div class="divider">
-                <div class="similar_cars">
-                    <h3>Similar Cars</h3>
-                    <div class="row">
-                        <?php 
-                        
-                        $bid= $_SESSION['brandid'];
-                        $sql = "SELECT tblvehicles.VehiclesTitle, tblbrands.BrandName, tblvehicles.PricePerDay, tblvehicles.FuelType, tblvehicles.ModelYear,tblvehicles.id, tblvehicles.SeatingCapacity, tblvehicles.VehiclesOverview, tblvehicles.Vimage1 FROM tblvehicles JOIN tblbrands on tblbrands.id=tblvehicles.VehiclesBrand WHERE tblvehicles.VehiclesBrand=:bid";
-                        $query = $dbh -> prepare($sql);
-                        $query -> bindParam(":bid", $bid, PDO::PARAM_STR);
-                        $query -> execute();
-                        $results = $query -> fetchAll(PDO::FETCH_OBJ);
-                        $cnt = 1;
+            <div class="divider"></div>
+            <div class="similar_cars">
+                <h3>Similar Cars</h3>
+                <div class="row">
+                    <?php
 
-                        
-                        ?>
-                    </div>
+                    $bid = $_SESSION['brandid'];
+                    $sql = "SELECT tblvehicles.VehiclesTitle, tblbrands.BrandName, tblvehicles.PricePerDay, tblvehicles.FuelType, tblvehicles.ModelYear,tblvehicles.id, tblvehicles.SeatingCapacity, tblvehicles.VehiclesOverview, tblvehicles.Vimage1 FROM tblvehicles JOIN tblbrands on tblbrands.id=tblvehicles.VehiclesBrand WHERE tblvehicles.VehiclesBrand=:bid";
+                    $query = $dbh->prepare($sql);
+                    $query->bindParam(":bid", $bid, PDO::PARAM_STR);
+                    $query->execute();
+                    $results = $query->fetchAll(PDO::FETCH_OBJ);
+                    $cnt = 1;
+
+                    if ($query->rowCount() > 0) {
+                        foreach ($results as $result) {
+
+                            ?>
+
+                            <div class="col-md-3 grid-listing">
+                                <div class="product-listing-m gray-bg">
+                                    <div class="product-listing-img">
+                                        <a href="vehicle-details.php?vhid=<?php echo htmlentities($result->id); ?>">
+                                            <img src="admin/img/vehicleimages/<?php echo htmlentities($result->Vimage1); ?>"
+                                                class="img-responsive" alt="image" />
+
+                                        </a>
+                                    </div>
+                                    <div class="product-listing-content">
+                                        <h5>
+                                            <a href="vehicle-details.php?vhid=<?php echo htmlentities($result->id); ?>"><?php echo htmlentities($result->BrandName); ?>
+                                                , <?php echo htmlentities($result->VehiclesTitle); ?>
+                                            </a>
+                                        </h5>
+                                        <p class="list-price"><?php echo htmlentities($result->PricePerDay); ?>$</p>
+                                        <ul class="features_list">
+                                            <li><i class="fa fa-user"
+                                                    aria-hidden="true"></i><?php echo htmlentities($result->SeatingCapacity); ?>
+                                                Seats </li>
+                                            <li><i class="fa fa-calendar"
+                                                    aria-hidden="true"></i><?php echo htmlentities($result->ModelYear); ?>Model
+                                            </li>
+                                            <li><i class="fa fa-car"
+                                                    aria-hidden="true"></i><?php echo htmlentities($result->FuelType); ?>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <?php
+                        }
+                    }
+                    ?>
                 </div>
             </div>
+
+
         </div>
     </section>
 
+    <?php include('includes/footer.php') ?>
 
+    <div id="back-top" class="back-top"><a href="#top"><i class="fa fa-angle-up" aria-hidden="true"></i></a> </div>
 
+    <?php include('includes/login.php') ?>
+
+    <?php include('includes/registration.php') ?>
+
+    <?php include('includes/forgotpassword.php') ?>
+
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/interface.js"></script>
+    <script src="assets/switcher/js/switcher.js"></script>
+    <script src="assets/js/bootstrap-slider.min.js"></script>
+    <script src="assets/js/slick.min.js"></script>
+    <script src="assets/js/owl.carousel.min.js"></script>
 </body>
 
 </html>
