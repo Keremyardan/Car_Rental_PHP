@@ -10,7 +10,7 @@ if (isset($_POST['submit'])) {
     $useremail = $_POST['login'];
     $status = 0;
     $vhid = $_GET['vhid'];
-    $bookingno = mt_getrandmax(100000000000, 999999999999);
+    $bookingno = mt_getrandmax(10000000, 99999999);
     $ret = "SELECT * FROM tblbooking WHERE (:fromdate BETWEEN DATE(Fromdate) AND DATE(ToDate) || :todate BETWEEN date(FromDate) and DATE(ToDate) || date(FromDate) BETWEEN :fromdate and :todate) AND VehicleId=:vhid";
     $query1 = $dbh->prepare($ret);
     $query1->bindParam(":vhid", $vhid, PDO::PARAM_STR);
@@ -142,7 +142,8 @@ if (isset($_POST['submit'])) {
                     <div class="listing_detail_head row">
                         <div class="col-md-9">
                             <h2><?php echo htmlentities($result->BrandName); ?>,
-                                <?php echo htmlentities($result->VehiclesTitle); ?></h2>
+                                <?php echo htmlentities($result->VehiclesTitle); ?>
+                            </h2>
                         </div>
                         <div class="col-md-3">
                             <div class="price_info">
@@ -324,13 +325,61 @@ if (isset($_POST['submit'])) {
                 <aside class="col-md-3">
                     <div class="share_vehicle">
                         <p>Share: <a href="#"><i class="fa fa-facebook-square" aria-hidden="true"></i></a>
-                        <a href="#"><i class ="fa fa-twitter-square" aria-hidden="true"></i></a>
-                        <a href="#"><i class ="fa fa-linkedin-square" aria-hidden="true"></i></a>
-                        <a href="#"><i class ="fa fa-google-plus-square" aria-hidden="true"></i></a>
-                    </p>
+                            <a href="#"><i class="fa fa-twitter-square" aria-hidden="true"></i></a>
+                            <a href="#"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a>
+                            <a href="#"><i class="fa fa-google-plus-square" aria-hidden="true"></i></a>
+                        </p>
                     </div>
-                    
+                    <div class="sidebar-widget">
+                        <div class="widget_heading">
+                            <h5><i class="fa fa-envelope" aria-hidden="true"></i>Book Now</h5>
+                        </div>
+                        <form method="post">
+                            <div class="form-group">
+                                <label>From Date:</label>
+                                <input type="date" class="form_control" name="fromdate" placeholder="From Date" required>
+                            </div>
+                            <div class="form-group">
+                                <label>To Date:</label>
+                                <input type="date" class="form_control" name="todate" placeholder="To Date" required>
+                            </div>
+                            <div class="form-group">
+                              <textarea rows="4" class="form-control" name="message" placeholder="Message"required></textarea>
+                            </div>
+                            <?php if ($_SESSION['login']) { ?>
+                                    <div class="form-group" >
+                                        <input type="submit" class="btn" name="submit" value="Book Now">
+                                    </div>
+                                    <?php 
+
+                            } else { ?>
+                                <a href="#loginform" class="btn btn-xs uppercase" data-toggle="modal" data-dismiss="modal">Login for a Booking!</a>
+                            <?php } ?>
+                            
+                        </form>
+                    </div>
                 </aside>
+            </div>
+
+            <div class="space-20"></div>
+            <div class="divider">
+                <div class="similar_cars">
+                    <h3>Similar Cars</h3>
+                    <div class="row">
+                        <?php 
+                        
+                        $bid= $_SESSION['brandid'];
+                        $sql = "SELECT tblvehicles.VehiclesTitle, tblbrands.BrandName, tblvehicles.PricePerDay, tblvehicles.FuelType, tblvehicles.ModelYear,tblvehicles.id, tblvehicles.SeatingCapacity, tblvehicles.VehiclesOverview, tblvehicles.Vimage1 FROM tblvehicles JOIN tblbrands on tblbrands.id=tblvehicles.VehiclesBrand WHERE tblvehicles.VehiclesBrand=:bid";
+                        $query = $dbh -> prepare($sql);
+                        $query -> bindParam(":bid", $bid, PDO::PARAM_STR);
+                        $query -> execute();
+                        $results = $query -> fetchAll(PDO::FETCH_OBJ);
+                        $cnt = 1;
+
+                        
+                        ?>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
