@@ -81,10 +81,10 @@ include('includes/config.php');
                 </div>
                 <div class="tab-content">
                     <div role="tabpanel" class="tab-pane active" id="resentnewcar">
-                        <?php $sql = "SELECT tblvehicles.VehiclesTitle, tblbrands.BrandName, tblvehicles.PricePerDay, tblvehicles.FuelType, tblvehicles.ModelYear, tblvehicles.id,tblvehicles.SeatingCapacity, tblvehicles.VehiclesOverview, tblvehicles.Vimage1 from tblvehicles join tblbrands on tblbrands.id=tblvehicles.VehiclesBrand limit 9";
+                        <?php $sql = "SELECT tblvehicles.VehiclesTitle,tblbrands.BrandName,tblvehicles.PricePerDay,tblvehicles.FuelType,tblvehicles.ModelYear,tblvehicles.id,tblvehicles.SeatingCapacity,tblvehicles.VehiclesOverview,tblvehicles.Vimage1 FROM tblvehicles JOIN tblbrands ON tblbrands.id=tblvehicles.VehiclesBrand limit 9";
                         $query = $dbh->prepare($sql);
                         $query->execute();
-                        $results = $query->fetchAll((PDO::FETCH_ASSOC));
+                        $results = $query->fetchAll(PDO::FETCH_OBJ);
                         $cnt = 1;
                         if ($query->rowCount() > 0) {
                             foreach ($results as $result) {
@@ -179,7 +179,7 @@ include('includes/config.php');
                     <?php
 
                     $tid = 1;
-                    $sql = "SELECT tbltestimonial.Testimonial, tblusers.FullName from tbltestimonial join tblusers on tbltestimonial.UserEmail=tblusers.EmailId where tbltestimonial.status=;tid limit 4";
+                    $sql = "SELECT tbltestimonial.Testimonial, tblusers.FullName FROM tbltestimonial JOIN tblusers ON tbltestimonial.UserEmail=tblusers.EmailId WHERE tbltestimonial.status=:tid limit 4";
                     $query = $dbh->prepare($sql);
                     $query->bindParam(':tid', $tid, PDO::PARAM_STR);
                     $query->execute();
