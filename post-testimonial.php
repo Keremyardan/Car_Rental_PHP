@@ -21,7 +21,7 @@ if (strlen($_SESSION['login']) == 0) {
             $error = "Something went wrong";
         }
     }
-?>
+    ?>
 
     <!DOCTYPE html>
     <html lang="en">
@@ -66,6 +66,7 @@ if (strlen($_SESSION['login']) == 0) {
                 background: #fff;
                 border-left: 4px solid #dd3d36;
                 -webkit-box-shadow: 0 1px 1px 0 rgba(0, 0, 0, .1);
+                box-shadow: 0 1px 1px 0 rgba(0, 0, 0, .1);
             }
 
             .succWrap {
@@ -74,6 +75,7 @@ if (strlen($_SESSION['login']) == 0) {
                 background: #fff;
                 border-left: 4px solid #5cb85c;
                 -webkit-box-shadow: 0 1px 1px 0 rgba(0, 0, 0, .1);
+                box-shadow: 0 1px 1px 0 rgba(0, 0, 0, .1);
             }
         </style>
 
@@ -123,63 +125,67 @@ if (strlen($_SESSION['login']) == 0) {
                                 <p><?php echo htmlentities($result->Address); ?>
                                     <br>
                                     <?php echo htmlentities($result->City); ?>&nbsp;<?php echo htmlentities($result->Country);
-                                                                                    }
-                                                                                } ?>
-                                </p>
-                            </div>
-                        </div>
+            }
+        } ?>
+                        </p>
+                    </div>
+                </div>
 
-                        <div class="row">
-                            <div class="col-md-3 col-sm-3">
-                                <?php include('includes/sidebar.php'); ?>
-                                <div class="col-md6 col-sm-8">
-                                    <div class="profile_wrap">
-                                        <h5 class="uppercase underline">
-                                            Post a Testimonial
-                                        </h5>
-                                        <?php if ($error) { ?>
-                                            <div class="errorWrap"><strong>ERROR</strong>:<?php echo htmlentities($error); ?></div><?php } elseif ($msg) { ?>
-                                            <div class="succWrap"><strong>SUCCESS</strong>:<?php echo htmlentities($msg); ?></div> <?php } ?>
-                                        <form method="post">
-                                            <div class="form-group">
-                                                <label class="control-label">Testimonial</label>
-                                                <textarea class="form-control white-bg" name="testimonial" rows="4" required=""></textarea>
-                                            </div>
-
-                                            <div class="form-group">
-                                                <button type="submit" name="submit" class="btn">Save <span class="angle_arrow"><i class="fa fa-angle-right" aria-hidden="true"></i></span></button>
-                                            </div>
-                                        </form>
-
+                <div class="row">
+                    <div class="col-md-3 col-sm-3">
+                        <?php include('includes/sidebar.php'); ?>
+                        <div class="col-md6 col-sm-8">
+                            <div class="profile_wrap">
+                                <h5 class="uppercase underline">
+                                    Post a Testimonial
+                                </h5>
+                                <?php if ($error) { ?>
+                                    <div class="errorWrap"><strong>ERROR</strong>:<?php echo htmlentities($error); ?></div>
+                                <?php } elseif ($msg) { ?>
+                                    <div class="succWrap"><strong>SUCCESS</strong>:<?php echo htmlentities($msg); ?></div>
+                                <?php } ?>
+                                <form method="post">
+                                    <div class="form-group">
+                                        <label class="control-label">Testimonial</label>
+                                        <textarea class="form-control white-bg" name="testimonial" rows="4"
+                                            required=""></textarea>
                                     </div>
-                                </div>
+
+                                    <div class="form-group">
+                                        <button type="submit" name="submit" class="btn">Save <span class="angle_arrow"><i
+                                                    class="fa fa-angle-right" aria-hidden="true"></i></span></button>
+                                    </div>
+                                </form>
+
                             </div>
                         </div>
                     </div>
-                </section>
+                </div>
+            </div>
+        </section>
 
 
 
-                <?php include('includes/footer.php') ?>
+        <?php include('includes/footer.php') ?>
 
-                <div id="back-top" class="back-top"><a href="#top"> <i class="fa fa-angle-up" aria-hidden="true"></i></a></div>
+        <div id="back-top" class="back-top"><a href="#top"> <i class="fa fa-angle-up" aria-hidden="true"></i></a></div>
 
-                <?php include('includes/login.php') ?>
+        <?php include('includes/login.php') ?>
 
-                <?php include('includes/registration.php') ?>
+        <?php include('includes/registration.php') ?>
 
-                <?php include('includes/forgotpassword.php') ?>
-
-
+        <?php include('includes/forgotpassword.php') ?>
 
 
-                <script src="assets/js/jquery.min.js"></script>
-                <script src="assets/js/bootstrap.min.js"></script>
-                <script src="assets/js/interface.js"></script>
-                <script src="assets/switcher/js/switcher.js"></script>
-                <script src="assets/js/bootstrap-slider.min.js"></script>
-                <script src="assets/js//slick.min.js"></script>
-                <script src="assets/js/owl.carousel.min.js"></script>
+
+
+        <script src="assets/js/jquery.min.js"></script>
+        <script src="assets/js/bootstrap.min.js"></script>
+        <script src="assets/js/interface.js"></script>
+        <script src="assets/switcher/js/switcher.js"></script>
+        <script src="assets/js/bootstrap-slider.min.js"></script>
+        <script src="assets/js//slick.min.js"></script>
+        <script src="assets/js/owl.carousel.min.js"></script>
 
 
     </body>
