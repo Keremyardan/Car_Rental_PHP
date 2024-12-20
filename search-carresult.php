@@ -11,8 +11,6 @@ include('includes/config.php');
 <head>
     <title>Car Rental | Car Listing</title>
 
-    <title>Car Rental Portal | My Profile</title>
-
     <link rel="stylesheet" href="assets/css/bootstrap.min.css" type="text/css">
 
     <link rel="stylesheet" href="assets/css/style.css" type="text/css">

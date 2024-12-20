@@ -1,7 +1,7 @@
 grabbing html gerek var mı?
 index.php render sorunu? // birsuru hata var kısmen giderildi
 
-
+search php yarısında kaldın tamamla
 
 
 
