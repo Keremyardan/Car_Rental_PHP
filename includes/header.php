@@ -3,6 +3,8 @@
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
+
+error_reporting(1);
 ?>
 
 <header>
@@ -15,7 +17,7 @@ if (session_status() === PHP_SESSION_NONE) {
                 <div class="col-sm-9 col-md-10">
                     <div class="header_info">
                         <?php
-                        $sql = "SELECT EmailId, ContactNo from tblcontactusinfo";
+                        $sql = "SELECT EmailId, ContactNo FROM tblcontactusinfo";
 
                         $query = $dbh->prepare($sql);
                         $query->execute();
@@ -40,17 +42,15 @@ if (session_status() === PHP_SESSION_NONE) {
                         <div class="social-follow"></div>
 
 
-                        <?php if (strlen($_SESSION['login']) == 0) {
+                        <?php if (strlen($_SESSION['login']) == 0 ) {
                             ?>
-                            <div class="login_btn"><a href="#loginform" class="btn btn-xs uppercase" data-toggle="modal"
+                            <div class="login_btn"> <a href="#loginform" class="btn btn-xs uppercase" data-toggle="modal"
                                     data-dismiss="modal">Login / Register</a>
 
                             </div>
                         <?php } else {
                             echo "Welcome to Car Rental Portal";
-                        }
-
-                        ?>
+                        } ?>
                     </div>
                 </div>
             </div>
@@ -99,7 +99,6 @@ if (session_status() === PHP_SESSION_NONE) {
 
                                     <li><a href="profile.php">Profile Settings</a></li>
                                     <li><a href="update-password.php">Update Password</a></li>
-                                    <li><a href="my-booking.php">My Booking</a></li>
                                     <li><a href="post-testimonial.php">Post a Testimonial</a></li>
                                     <li><a href="my-testimonials.php">My Testimonials</a></li>
                                     <li><a href="logout.php">Sign Out</a></li>
