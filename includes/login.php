@@ -55,7 +55,7 @@
                 </div>
             </div>
             <div class="modal-footer text-center">
-                <p>Don' have an account? <a href="#signupform" data-toggle="modal" data-dismiss="modal">Signup here!</a></p>
+                <p>Don't have an account? <a href="#signupform" data-toggle="modal" data-dismiss="modal">Signup here!</a></p>
                 <p><a href="#forgotpassword" data-toggle="modal" data-dismiss="modal">Forgot password?</a></p>
             </div>
         </div>
