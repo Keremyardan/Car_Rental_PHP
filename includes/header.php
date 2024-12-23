@@ -13,7 +13,7 @@ if (session_status() === PHP_SESSION_NONE) {
                     <div class="logo"><a href="index.php"><img src="assets/images/logo.png" alt="image" /></a></div>
                 </div>
                 <div class="col-sm-9 col-md-10">
-                    <div class="header-info">
+                    <div class="header_info">
                         <?php
                         $sql = "SELECT EmailId, ContactNo from tblcontactusinfo";
 
@@ -26,48 +26,48 @@ if (session_status() === PHP_SESSION_NONE) {
                         }
                         ?>
 
-                        <div class="header-widgets">
-                            <div class="circle_icom"><i class="fa fa-envelope" aria-hidden="true"></i></div>
+                        <div class="header_widgets">
+                            <div class="circle_icon"> <i class="fa fa-envelope" aria-hidden="true"> </i> </div>
                             <p class="uppercase_text">Send an Email for Support: </p>
                             <a href="mailto:<?php echo htmlentities($email); ?>"><?php echo htmlentities($email); ?></a>
                         </div>
-                        <div class="header-widgets">
-                            <div class="circle_icom"><i class="fa fa-phone" aria-hidden="true"></i></div>
+                        <div class="header_widgets">
+                            <div class="circle_icon"><i class="fa fa-phone" aria-hidden="true"></i></div>
                             <p class="uppercase_text">Service Helpline: </p>
                             <a
-                                href="mailto:<?php echo htmlentities($contactno); ?>"><?php echo htmlentities($contactno); ?></a>
+                                href="tel:<?php echo htmlentities($contactno); ?>"><?php echo htmlentities($contactno); ?></a>
                         </div>
                         <div class="social-follow"></div>
 
-                    </div>
-                    <?php if (!isset($_SESSION['login']) || strlen($_SESSION['login']) == 0) {
+
+                        <?php if (strlen($_SESSION['login']) == 0) {
+                            ?>
+                            <div class="login_btn"><a href="#loginform" class="btn btn-xs uppercase" data-toggle="modal"
+                                    data-dismiss="modal">Login / Register</a>
+
+                            </div>
+                        <?php } else {
+                            echo "Welcome to Car Rental Portal";
+                        }
+
                         ?>
-                        <div class="login-btn"><a href="#loginform" class="btn btn-xs uppercase" data-toggle="modal"
-                                data-dismiss="modal">Login / Register</a>
-
-                        </div>
-                    <?php } else {
-                        echo "Welcome to Car Rental Portal";
-                    }
-
-                    ?>
-
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    </div>
+
 
     <nav id="navigation_bar" class="navbar navbar-default">
         <div class="container">
             <div class="navbar-header">
-                <button id="menu-slide" data-target="#navigation" aria-expanded="false" data-toggle="collapse"
+                <button id="menu_slide" data-target="#navigation" aria-expanded="false" data-toggle="collapse"
                     class="navbar-toggle collapsed" type="button"><span class="sr-only">Toggle Navigation</span>
-                    <span class="icon-bar"></span> <span class="icon-bar"></span>
+                    <span class="icon-bar"></span> <span class="icon-bar"><span class="icon-bar"></span> </span>
                 </button>
             </div>
-            <div class="header-wrap">
-                <div class="user-login">
+            <div class="header_wrap">
+                <div class="user_login">
                     <ul>
                         <li class="dropdown"><a href="#" data-toggle="dropdown" aria-haspopup="true"
                                 aria-expanded="false">
@@ -76,19 +76,19 @@ if (session_status() === PHP_SESSION_NONE) {
 
                                 <?php
                                 if (isset($_SESSION['login']) && strlen($_SESSION['login']) > 0) {
-                                $email = $_SESSION['login'];
-                                $sql = "SELECT Fullname FROM tblusers WHERE EmailId=:email";
-                                $query = $dbh->prepare($sql);
-                                $query->bindParam(":email", $email, PDO::PARAM_STR);
-                                $query->execute();
-                                $results = $query->fetchAll(PDO::FETCH_OBJ);
+                                    $email = $_SESSION['login'];
+                                    $sql = "SELECT Fullname FROM tblusers WHERE EmailId=:email";
+                                    $query = $dbh->prepare($sql);
+                                    $query->bindParam(":email", $email, PDO::PARAM_STR);
+                                    $query->execute();
+                                    $results = $query->fetchAll(PDO::FETCH_OBJ);
 
-                                if ($query->rowCount() > 0) {
-                                    foreach ($results as $result) {
-                                        echo htmlentities($result->Fullname);
+                                    if ($query->rowCount() > 0) {
+                                        foreach ($results as $result) {
+                                            echo htmlentities($result->Fullname);
+                                        }
                                     }
                                 }
-                            }
                                 ?>
                                 <i class="fa fa-angle-down" aria-hidden="true"></i></a>
                             <ul class="droprown-menu">
@@ -114,7 +114,7 @@ if (session_status() === PHP_SESSION_NONE) {
                 <div class="header_search">
                     <div id="search_toggle"><i class="fa fa-search" aria-hidden="true"></i></div>
                     <form action="search.php" method="post" id="header-search-form">
-                        <input type="text" placeholder="Search" name="searchdata" class="form-control" required="true">
+                        <input type="text" placeholder="Search..." name="searchdata" class="form-control" required="true">
                         <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
                     </form>
                 </div>
