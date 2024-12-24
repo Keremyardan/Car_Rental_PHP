@@ -6,7 +6,7 @@ if (isset($_POST['update'])) {
     $mobile = $_POST['mobile'];
     $newpassword = md5($_POST['newpassword']);
 
-    $sql = "SELECT EmailId FROM tbusers WHERE EmailId=:email and ContactNo:mobile";
+    $sql = "SELECT EmailId FROM tbusers WHERE EmailId=:email AND ContactNo:mobile";
     $query = $dbh->prepare($sql);
     $query->bindParam(":email", $email, PDO::PARAM_STR);
     $query->bindParam(":mobile", $mobile, PDO::PARAM_STR);
@@ -43,33 +43,41 @@ if (isset($_POST['update'])) {
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
                 <h3 class="modal-title">Password Recovery</h3>
             </div>
             <div class="modal-body">
                 <div class="row">
                     <div class="forgotpassword_wrap">
-                        <div class="col-md12">
+                        <div class="col-md-12">
                             <form name="chngpwd" method="post" onSubmit="return valid();">
                                 <div class="form-group">
-                                    <input type="email" name="email" class="form-control" placeholder="Your Email Address*" required="">
+                                    <input type="email" name="email" class="form-control"
+                                        placeholder="Your Email Address*" required="">
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" name="mobile" class="form-control" placeholder="Registration Mobile No*" required="">
+                                    <input type="text" name="mobile" class="form-control"
+                                        placeholder="Registration Mobile No*" required="">
                                 </div>
                                 <div class="form-group">
-                                    <input type="password" name="newpassword" class="form-control" placeholder="New Password" required="">
+                                    <input type="password" name="newpassword" class="form-control"
+                                        placeholder="New Password" required="">
                                 </div>
                                 <div class="form-group">
-                                    <input type="password" name="confirmpassword" class="form-control" placeholder="Confirm Password" required="">
+                                    <input type="password" name="confirmpassword" class="form-control"
+                                        placeholder="Confirm Password" required="">
                                 </div>
                                 <div class="form-group">
                                     <input type="submit" value="Reset Password" name="update" class="btn btn-block">
                                 </div>
                             </form>
                             <div class="text-center">
-                                <p class="gray_text">For security reasons we don't store your passwords. Your password will be reset and a new one will be sent!</p>
-                                <p><href="#loginform" data-toggle="modal" data-dismiss="modal"> <i class="fa fa-angle-double-left" aria-hidden="true"></i>Back to Login Page!</a></p>
+                                <p class="gray_text">For security reasons we don't store your passwords. Your password
+                                    will be reset and a new one will be sent!</p>
+                                <p><a href="#loginform" data-toggle="modal" data-dismiss="modal"> <i
+                                            class="fa fa-angle-double-left" aria-hidden="true"></i>Back to Login
+                                        Page!</a></p>
                             </div>
                         </div>
                     </div>

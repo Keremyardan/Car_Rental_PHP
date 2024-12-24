@@ -1,7 +1,8 @@
-grabbing html gerek var mı?
-index.php render sorunu? // birsuru hata var kısmen giderildi
+cookies ekle
 
-search php yarısında kaldın tamamla
+servera al ve mail atımını sağla
+
+
 
 
 

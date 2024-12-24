@@ -5,7 +5,7 @@ if (isset($_POST['signup'])) {
     $email = $_POST['emailid'];
     $mobile = $_POST['mobileno'];
     $password = md5($_POST['password']);
-    $sql = "INSERT INTO tblusers(Fullname,EmailId,ContactNo,Password) VALUES(:fname, :email, :mobile, :password)";
+    $sql = "INSERT INTO tblusers(FullName,EmailId,ContactNo,Password) VALUES(:fname, :email, :mobile, :password)";
     $query = $dbh->prepare($sql);
     $query->bindParam(":fname", $fname, PDO::PARAM_STR);
     $query->bindParam(":email", $email, PDO::PARAM_STR);
@@ -28,52 +28,58 @@ if (isset($_POST['signup'])) {
 
 <script>
     function checkAvailability() {
-        $("loaderIcon").show();
+        $("#loaderIcon").show();
         jQuery.ajax({
-            url:"checl_availability.php",
-            data:'emailid='+$("#emailid").val(),
-            type:"POST",
-            success:function(data){
+            url: "check_availability.php",
+            data: 'emailid='+$("#emailid").val(),
+            type: "POST",
+            success: function (data) {
                 $("#user-availability-status").html(data);
                 $("#loaderIcon").hide();
             },
-            error:function(){}
+            error: function () { }
         });
     }
 </script>
 
 
-<div class="modal fade" id="singupform">
+<div class="modal fade" id="signupform">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
                 <h3 class="modal-title">Sign Up</h3>
             </div>
             <div class="modal-body">
                 <div class="row">
-                    <div class="signup-wrap">
+                    <div class="signup_wrap">
                         <div class="col-md-12 col-sm-6">
                             <form method="post" name="signup">
                                 <div class="form-group">
-                                    <input type="text" class="form-control" name="fullname" placeholder="Full Name" required="required">
+                                    <input type="text" class="form-control" name="fullname" placeholder="Full Name"
+                                        required="required">
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" class="form-control" name="mobileno" placeholder="Mobile No" required="required">
+                                    <input type="text" class="form-control" name="mobileno" placeholder="Mobile No"
+                                        maxlength="10" required="required">
                                 </div>
                                 <div class="form-group">
-                                    <input type="email" class="form-control" name="emailid" id="emailid" onBlur="checkAvailability()" placeholder="Email Address" required="required">
+                                    <input type="email" class="form-control" name="emailid" id="emailid"
+                                        onBlur="checkAvailability()" placeholder="Email Address" required="required">
                                     <span id="user-availability-status" style="font-size:12px"></span>
                                 </div>
                                 <div class="form-group">
-                                    <input type="password" class="form-control" id="password" name="password" placeholder="Password" required="required">
+                                    <input type="password" class="form-control" id="password" name="password"
+                                        placeholder="Password" required="required">
                                 </div>
                                 <div class="form-group checkbox">
                                     <input type="checkbox" id="terms_agree" required="required" checked="">
                                     <label for="terms_agree">I agree with <a href="#">Terms and Conditions</a></label>
                                 </div>
                                 <div class="form-group">
-                                    <input type="submit" value="Sign Up" name="signup" id="submit" class="btn btn-block">
+                                    <input type="submit" value="Sign Up" name="signup" id="submit"
+                                        class="btn btn-block">
                                 </div>
                             </form>
                         </div>
@@ -81,7 +87,7 @@ if (isset($_POST['signup'])) {
                 </div>
             </div>
             <div class="modal-footer text-center">
-                <p > Already have an account?<a href="#loginform" data-toggle="modal" data-dismiss="modal"></a></p>
+                <p> Already have an account?<a href="#loginform" data-toggle="modal" data-dismiss="modal"></a></p>
             </div>
         </div>
     </div>

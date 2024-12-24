@@ -1,11 +1,16 @@
+
+
 <?php
-// Oturum kontrolü ve başlatma
+/*
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
 error_reporting(1);
+*/
 ?>
+
+
 
 <header>
     <div class="default-header">
@@ -17,8 +22,7 @@ error_reporting(1);
                 <div class="col-sm-9 col-md-10">
                     <div class="header_info">
                         <?php
-                        $sql = "SELECT EmailId, ContactNo FROM tblcontactusinfo";
-
+                        $sql = "SELECT EmailId,ContactNo FROM tblcontactusinfo";
                         $query = $dbh->prepare($sql);
                         $query->execute();
                         $results = $query->fetchAll(PDO::FETCH_OBJ);
@@ -77,7 +81,7 @@ error_reporting(1);
                                 <?php
                                 if (isset($_SESSION['login']) && strlen($_SESSION['login']) > 0) {
                                     $email = $_SESSION['login'];
-                                    $sql = "SELECT Fullname FROM tblusers WHERE EmailId=:email";
+                                    $sql = "SELECT Fullame FROM tblusers WHERE EmailId=:email";
                                     $query = $dbh->prepare($sql);
                                     $query->bindParam(":email", $email, PDO::PARAM_STR);
                                     $query->execute();
@@ -99,6 +103,7 @@ error_reporting(1);
 
                                     <li><a href="profile.php">Profile Settings</a></li>
                                     <li><a href="update-password.php">Update Password</a></li>
+                                    <li><a href="my-booking.php">My Booking</a></li>
                                     <li><a href="post-testimonial.php">Post a Testimonial</a></li>
                                     <li><a href="my-testimonials.php">My Testimonials</a></li>
                                     <li><a href="logout.php">Sign Out</a></li>

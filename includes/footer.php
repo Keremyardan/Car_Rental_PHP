@@ -29,41 +29,42 @@ if (isset($_POST["emailsubscribe"])) {
 <footer>
     <div class="footer-top">
         <div class="container">
-            <div class="col-md-6">
-                <h6>About us</h6>
+            <div class="row">
+                <div class="col-md-6">
+                    <h6>About us</h6>
 
-                <ul>
-                    <li><a href="page.php?type=aboutus">About us</a></li>
-                    <li><a href="page.php?type=faqs">FAQs</a></li>
-                    <li><a href="page.php?type=privacy">Privacy</a></li>
-                    <li><a href="page.php?type=terms">Terms of use</a></li>
-                    <li><a href="admin">Admin Login</a></li>
-                </ul>
-            </div>
-
-            <div class="col-md-3 col-sm-6">
-                <h6>Subscribe Newsletter</h6>
-                <div class="newsletter-form">
-
-                    <form method="post">
-                        <div class="form-group">
-                            <input type="email" name="subscriberemail" class="form-control newsletter-input" required
-                                placeholder="Enter Email Adress" />
-
-                        </div>
-                        <button type="submit" name="emailsubscribe" class="btn btn-block">Subscribe <span
-                                class="angle_arrow">
-                                <i class="fa fa-angle-right" aria-hidden="true"></i>
-                            </span></button>
-                    </form>
-                    <p class="subscribed-text">We send great deals for our potential hirers</p>
+                    <ul>
+                        <li><a href="page.php?type=aboutus">About us</a></li>
+                        <li><a href="page.php?type=faqs">FAQs</a></li>
+                        <li><a href="page.php?type=privacy">Privacy</a></li>
+                        <li><a href="page.php?type=terms">Terms of use</a></li>
+                        <li><a href="admin">Admin Login</a></li>
+                    </ul>
                 </div>
 
+                <div class="col-md-3 col-sm-6">
+                    <h6>Subscribe Newsletter</h6>
+                    <div class="newsletter-form">
+
+                        <form method="post">
+                            <div class="form-group">
+                                <input type="email" name="subscriberemail" class="form-control newsletter-input"
+                                    required placeholder="Enter Email Adress" />
+
+                            </div>
+                            <button type="submit" name="emailsubscribe" class="btn btn-block">Subscribe <span
+                                    class="angle_arrow">
+                                    <i class="fa fa-angle-right" aria-hidden="true"></i>
+                                </span></button>
+                        </form>
+                        <p class="subscribed-text">We send great deals for our potential hirers</p>
+                    </div>
+
+                </div>
+
+
             </div>
-
-
         </div>
-    </div>
     </div>
 
     <div class="footer-bottom">
@@ -87,4 +88,5 @@ if (isset($_POST["emailsubscribe"])) {
             </div>
         </div>
     </div>
+
 </footer>

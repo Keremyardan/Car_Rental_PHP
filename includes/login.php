@@ -4,9 +4,10 @@
 
     {
 
-        $email = $_POST['login'];
+        $email = $_POST['email'];
         $password = md5($_POST['password']);
-        $sql = "SELECT EmailId, Password, FullName FROM tblusers WHERE EmailId = :email and Password=:password";
+        $sql = "SELECT EmailId,Password,FullName FROM tblusers WHERE EmailId=:email AND Password=:password";
+        $query=$dbh->prepare($sql);
         $query -> bindParam(":email", $email, PDO::PARAM_STR);
         $query -> bindParam (":password", $password, PDO::PARAM_STR);
         $query -> execute();
@@ -34,7 +35,7 @@
             </div>
             <div class="modal-body">
                 <div class="row">
-                    <div class="login-wrap">
+                    <div class="login_wrap">
                         <div class="col-md12 col-sm-6">
                             <form method="post">
                                 <div class="form-group">
