@@ -64,7 +64,7 @@ include('includes/config.php');
         <div class="container">
             <div class="section-header text-center">
                 <h2>Find the best <span>Car for you!</span></h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam pretium aliquam dui. Donec ac finibus
+                <p>Loremu ipsum dolor sit amet, consectetur adipiscing elit. Etiam pretium aliquam dui. Donec ac finibus
                     purus, ut tempus ex. Nam vestibulum scelerisque nunc, vitae ultricies nisl varius ac. Aenean
                     lobortis venenatis lacinia. Cras ut urna id mi luctus gravida laoreet ac quam. Nullam porttitor
                     tempor vulputate. Nulla porta maximus dui, eget faucibus neque. Praesent quis elit nisl. Nullam
